@@ -9,7 +9,14 @@ export const ABOUT_TEXT = `I'm currently pursuing my Master's in Computer Scienc
 
 export const EXPERIENCES = [
   {
-    year: "Aug 2024 - Present",
+    year: "Apr 2023 - Present",
+    role: "Software Engineering Intern",
+    company: "Swivl",
+    description: `Built a secure authentication system with AWS Cognito. Optimized Node.js APIs, deployed apps on AWS EC2, and implemented CI/CD pipelines using Bitbucket. Focused on security, scalability, and monitoring.`,
+    technologies: ["Node.js", "AWS Cognito", "Bitbucket Pipelines", "EC2"],
+  },
+  {
+    year: "Aug 2024 - Dec 2024",
     role: "Process Automation Intern",
     company: "Paces Ferry Wealth Advisors",
     description: `Automated internal workflows at a $289M asset management firm using Microsoft Power Automate and Zapier. Built custom scripts in Python and JavaScript to optimize data accuracy and back-office performance.`,
@@ -21,13 +28,6 @@ export const EXPERIENCES = [
     company: "GSU Office of Sponsored Programs",
     description: `Created advanced reports and managed data using Power BI and Microsoft Access. Improved decision-making through efficient reporting systems and optimized data storage solutions.`,
     technologies: ["Power BI", "Microsoft Access", "Data Visualization"],
-  },
-  {
-    year: "Apr 2023 - Aug 2023",
-    role: "Software Engineering Intern",
-    company: "Swivl",
-    description: `Built a secure authentication system with AWS Cognito. Optimized Node.js APIs, deployed apps on AWS EC2, and implemented CI/CD pipelines using Bitbucket. Focused on security, scalability, and monitoring.`,
-    technologies: ["Node.js", "AWS Cognito", "Bitbucket Pipelines", "EC2"],
   },
   {
     year: "Feb 2022 - May 2024",
