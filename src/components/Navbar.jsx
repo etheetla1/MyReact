@@ -44,6 +44,17 @@ const iconFloat = (delay = 0) => ({
   },
 });
 
+const iconPulse = (color) => ({
+  animate: {
+    color: [color, "#ffffff", color],
+  },
+  transition: {
+    duration: 3,
+    repeat: Infinity,
+    ease: "easeInOut",
+  },
+});
+
 const Navbar = () => {
   return (
     <nav className="mb-20 flex items-center justify-between py-6">
@@ -58,35 +69,110 @@ const Navbar = () => {
       </motion.div>
 
       {/* Social Icons */}
-      <div className="m-8 flex items-center justify-center gap-4 text-2xl">
-        <motion.div
-          initial={iconFloat(0).initial}
-          animate={iconFloat(0).animate}
-          transition={iconFloat(0).transition}
+      <div className="m-8 flex items-center justify-center gap-6 text-2xl">
+        {/* LinkedIn */}
+        <a
+          href="https://www.linkedin.com/in/elisha-theetla-22a6121b5/"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <FaLinkedin />
-        </motion.div>
-        <motion.div
-          initial={iconFloat(0.1).initial}
-          animate={iconFloat(0.1).animate}
-          transition={iconFloat(0.1).transition}
+          <motion.div
+            initial={iconFloat(0).initial}
+            animate={{
+              ...iconFloat(0).animate,
+              ...iconPulse("#0077B5").animate,
+            }}
+            transition={{
+              ...iconFloat(0).transition,
+              ...iconPulse("#0077B5").transition,
+            }}
+            whileHover={{
+              scale: 1.2,
+              color: "#0077B5",
+              transition: { type: "spring", stiffness: 300, damping: 10 },
+            }}
+          >
+            <FaLinkedin />
+          </motion.div>
+        </a>
+
+        {/* GitHub */}
+        <a
+          href="https://github.com/"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <FaGithub />
-        </motion.div>
-        <motion.div
-          initial={iconFloat(0.2).initial}
-          animate={iconFloat(0.2).animate}
-          transition={iconFloat(0.2).transition}
+          <motion.div
+            initial={iconFloat(0.1).initial}
+            animate={{
+              ...iconFloat(0.1).animate,
+              ...iconPulse("#888").animate,
+            }}
+            transition={{
+              ...iconFloat(0.1).transition,
+              ...iconPulse("#888").transition,
+            }}
+            whileHover={{
+              scale: 1.2,
+              color: "#888",
+              transition: { type: "spring", stiffness: 300, damping: 10 },
+            }}
+          >
+            <FaGithub />
+          </motion.div>
+        </a>
+
+        {/* Instagram */}
+        <a
+          href="https://www.instagram.com/est1_221/"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <FaInstagram />
-        </motion.div>
-        <motion.div
-          initial={iconFloat(0.3).initial}
-          animate={iconFloat(0.3).animate}
-          transition={iconFloat(0.3).transition}
+          <motion.div
+            initial={iconFloat(0.2).initial}
+            animate={{
+              ...iconFloat(0.2).animate,
+              ...iconPulse("#E1306C").animate,
+            }}
+            transition={{
+              ...iconFloat(0.2).transition,
+              ...iconPulse("#E1306C").transition,
+            }}
+            whileHover={{
+              scale: 1.2,
+              color: "#E1306C",
+              transition: { type: "spring", stiffness: 300, damping: 10 },
+            }}
+          >
+            <FaInstagram />
+          </motion.div>
+        </a>
+
+        {/* Twitter / X */}
+        <a
+          href="https://x.com/ElishaSuhas"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <FaSquareXTwitter />
-        </motion.div>
+          <motion.div
+            initial={iconFloat(0.3).initial}
+            animate={{
+              ...iconFloat(0.3).animate,
+              ...iconPulse("#1DA1F2").animate,
+            }}
+            transition={{
+              ...iconFloat(0.3).transition,
+              ...iconPulse("#1DA1F2").transition,
+            }}
+            whileHover={{
+              scale: 1.2,
+              color: "#1DA1F2",
+              transition: { type: "spring", stiffness: 300, damping: 10 },
+            }}
+          >
+            <FaSquareXTwitter />
+          </motion.div>
+        </a>
       </div>
     </nav>
   );
