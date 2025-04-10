@@ -3,38 +3,38 @@ import project2 from "../assets/projects/project-2.jpg";
 import project3 from "../assets/projects/project-3.jpg";
 import project4 from "../assets/projects/project-4.jpg";
 
-export const HERO_CONTENT = `I'm a full stack developer passionate about building cloud-native applications, with hands-on experience in AWS, Node.js, React, automation, and scalable systems. My mission is to create secure, efficient solutions that merge innovation with user-focused design.`;
+export const HERO_CONTENT = `I’m a full stack developer and cloud enthusiast passionate about building secure, scalable web apps and automation solutions. With real-world experience in AWS, Node.js, React.js, and Microsoft Power Automate, I’m driven to create efficient systems that merge business logic with technical excellence.`;
 
-export const ABOUT_TEXT = `I am a dedicated full stack developer and cloud enthusiast currently pursuing my Master's in Computer Science at Georgia State University. With a BBA in Computer Information Systems and hands-on internship experience in software engineering, automation, and DevOps, I have built and deployed secure, scalable systems using tools like AWS, React.js, Node.js, and Power Automate. My academic and professional journey has been shaped by a passion for problem-solving, efficiency, and innovation. When I’m not building things, I enjoy exploring tech trends, contributing to open source, and working on side projects.`;
+export const ABOUT_TEXT = `I'm currently pursuing my Master's in Computer Science at Georgia State University, after completing a Bachelor's in Computer Information Systems. My experience spans software engineering, DevOps, automation, and data analytics — including internships at Swivl, Paces Ferry Wealth Advisors, and Georgia State. I specialize in developing cloud-native applications and streamlining workflows using tools like AWS, React.js, Node.js, Python, and Power Platform. Outside of coding, I enjoy exploring new tech, contributing to open source, and building tools that simplify everyday life.`;
 
 export const EXPERIENCES = [
   {
-    year: "2024 - Present",
+    year: "Aug 2024 - Present",
     role: "Process Automation Intern",
     company: "Paces Ferry Wealth Advisors",
-    description: `Automated internal processes using Zapier and Microsoft Power Automate to improve operational efficiency for a $289M asset management firm. Developed scripts in Python and JavaScript to streamline reporting workflows and improve data accuracy.`,
+    description: `Automated internal workflows at a $289M asset management firm using Microsoft Power Automate and Zapier. Built custom scripts in Python and JavaScript to optimize data accuracy and back-office performance.`,
     technologies: ["Python", "JavaScript", "Power Automate", "Zapier"],
   },
   {
-    year: "2024 - Present",
+    year: "Aug 2024 - Dec 2024",
     role: "Graduate Administrative Assistant",
     company: "GSU Office of Sponsored Programs",
-    description: `Managed reporting and data infrastructure projects using Power BI and Microsoft Access to optimize decision-making and ensure data integrity.`,
-    technologies: ["Power BI", "Microsoft Access", "Data Analysis"],
+    description: `Created advanced reports and managed data using Power BI and Microsoft Access. Improved decision-making through efficient reporting systems and optimized data storage solutions.`,
+    technologies: ["Power BI", "Microsoft Access", "Data Visualization"],
   },
   {
-    year: "2023",
+    year: "Apr 2023 - Aug 2023",
     role: "Software Engineering Intern",
     company: "Swivl",
-    description: `Built secure user authentication with AWS Cognito, optimized Node.js APIs, and implemented CI/CD pipelines using Bitbucket. Deployed scalable applications on AWS EC2, ensuring high availability and performance.`,
-    technologies: ["AWS", "Node.js", "CI/CD", "Cognito"],
+    description: `Built a secure authentication system with AWS Cognito. Optimized Node.js APIs, deployed apps on AWS EC2, and implemented CI/CD pipelines using Bitbucket. Focused on security, scalability, and monitoring.`,
+    technologies: ["Node.js", "AWS Cognito", "Bitbucket Pipelines", "EC2"],
   },
   {
-    year: "2022 - 2024",
+    year: "Feb 2022 - May 2024",
     role: "Student Data Analyst",
     company: "GSU Office of Development",
-    description: `Created data pipelines and analytics dashboards for a $100M fundraising portfolio using SQL, Power BI, and Python. Enhanced system performance and donor strategy with data-driven insights.`,
-    technologies: ["SQL", "Power BI", "Python"],
+    description: `Engineered data pipelines and generated reports for a $100M fundraising portfolio. Utilized SQL, Python, and Power BI to deliver strategic insights and improve system performance by 35–45%.`,
+    technologies: ["SQL", "Python", "Power BI"],
   },
 ];
 
@@ -43,29 +43,29 @@ export const PROJECTS = [
     title: "Mobile App Dev (iOS/Android)",
     image: project1,
     description:
-      "Led cross-platform mobile app development using Java, Swift, and SQLite. Managed complete CI/CD pipeline and deployed production-ready builds.",
-    technologies: ["Java", "Swift", "Xcode", "SQLite"],
+      "Developed cross-platform mobile applications using Java, Swift, Core Data, and SQLite. Led CI/CD setup, testing, debugging, and store deployment.",
+    technologies: ["Java", "Swift", "Xcode", "SQLite", "CI/CD"],
   },
   {
     title: "Bazaar – Healthy Food Everywhere",
     image: project2,
     description:
-      "A full-stack web app with a Bootstrap front-end and optimized Node.js/Express backend, enabling seamless access to healthy food resources.",
-    technologies: ["HTML", "CSS", "MongoDB", "Node.js", "Express.js"],
+      "Created a full-stack app for locating healthy food options. Used HTML, CSS, Bootstrap for UI and optimized backend performance with Node.js and MongoDB.",
+    technologies: ["HTML", "CSS", "Node.js", "MongoDB", "Express.js"],
   },
   {
-    title: "3D Printed Homes Business Model",
+    title: "Automation Workflow System",
     image: project3,
     description:
-      "Pitched a working business model for 3D printed homes at Columbia’s innovation program. Integrated technical and user requirements into app mockups.",
-    technologies: ["Business Dev", "Pitching", "Agile", "Prototyping"],
+      "Designed automation workflows using Microsoft Power Automate and Zapier for internal operations. Integrated Python/JavaScript scripts for dynamic task handling.",
+    technologies: ["Power Automate", "Zapier", "Python", "JavaScript"],
   },
   {
-    title: "CI/CD & AWS Integration",
+    title: "CI/CD + AWS App Deployment",
     image: project4,
     description:
-      "Built CI/CD pipelines and deployed secure apps on AWS EC2. Leveraged AWS services for auth, performance monitoring, and scalability.",
-    technologies: ["CI/CD", "AWS EC2", "Cognito", "Bitbucket Pipelines"],
+      "Developed and deployed secure applications on AWS EC2 with CI/CD pipelines using Bitbucket. Integrated AWS services for monitoring and identity management.",
+    technologies: ["AWS", "Bitbucket", "EC2", "CI/CD", "Cognito"],
   },
 ];
 
