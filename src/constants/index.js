@@ -3,7 +3,7 @@ import project2 from "../assets/projects/project-2.jpg";
 import project3 from "../assets/projects/project-3.jpg";
 import project4 from "../assets/projects/project-4.jpg";
 
-export const HERO_CONTENT = `I’m a ver full stack developer and cloud enthusiast passionate about building secure, scalable web apps and automation solutions. With real-world experience in AWS, Node.js, React.js, and Microsoft Power Automate, I’m driven to create efficient systems that merge business logic with technical excellence.`;
+export const HERO_CONTENT = `I’m a full stack developer and cloud enthusiast passionate about building secure, scalable web apps and automation solutions. With real-world experience in AWS, Node.js, React.js, and Microsoft Power Automate, I’m driven to create efficient systems that merge business logic with technical excellence.`;
 
 export const ABOUT_TEXT = `I'm currently pursuing my Master's in Computer Science at Georgia State University, after completing a Bachelor's in Computer Information Systems. My experience spans software engineering, DevOps, automation, and data analytics — including internships at Swivl, Paces Ferry Wealth Advisors, and Georgia State. I specialize in developing cloud-native applications and streamlining workflows using tools like AWS, React.js, Node.js, Python, and Power Platform. Outside of coding, I enjoy exploring new tech, contributing to open source, and building tools that simplify everyday life.`;
 
