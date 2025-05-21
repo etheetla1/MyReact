@@ -51,7 +51,7 @@ const categories = {
   ],
   Technologies: [
     { icon: <RiReactjsLine />, label: "React", color: "#61DBFB" },
-    { icon: <TbBrandNextjs />, label: "Next.js", color: "#ffffff" },
+    { icon: <TbBrandNextjs />, label: "Next.js", color: "#000000" },
     { icon: <FaNodeJs />, label: "Node.js", color: "#3C873A" },
     { icon: <DiRedis />, label: "Redis", color: "#D82C20" },
     { icon: <SiTailwindcss />, label: "Tailwind", color: "#38BDF8" },
