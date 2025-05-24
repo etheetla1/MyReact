@@ -1,5 +1,5 @@
-import aboutImg from "../assets/about.jpg";
 import { ABOUT_TEXT } from "../constants";
+import { S3_IMAGES } from "../constants/s3";
 import { motion } from "framer-motion";
 
 const container = (delay = 0) => ({
@@ -51,7 +51,7 @@ const About = () => {
             viewport={{ once: true }}
             className="flex items-center justify-center"
           >
-            <img className="rounded-2xl" src={aboutImg} alt="about" />
+            <img className="rounded-2xl" src={S3_IMAGES.about} alt="about" />
           </motion.div>
         </div>
 

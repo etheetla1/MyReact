@@ -1,5 +1,5 @@
 import { HERO_CONTENT } from "../constants";
-import profilePic from "../assets/elishaTheetlaProfile1.png";
+import { S3_IMAGES } from "../constants/s3";
 import { motion } from "framer-motion";
 
 const container = (delay = 0) => ({
@@ -53,7 +53,7 @@ const Hero = () => {
               variants={container(0.8)}
               initial="hidden"
               animate="visible"
-              src={profilePic}
+              src={S3_IMAGES.profile}
               alt="Elisha Theetla"
               className="w-96 h-96 object-cover rounded-xl shadow-lg"
             />

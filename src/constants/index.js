@@ -1,9 +1,6 @@
-import project1 from "../assets/projects/project-1.jpg";
-import project2 from "../assets/projects/project-2.jpg";
-import project3 from "../assets/projects/project-3.jpg";
-import project4 from "../assets/projects/project-4.jpg";
+import { S3_IMAGES } from './s3';
 
-export const HERO_CONTENT = `I’m a full stack developer and cloud enthusiast passionate about building secure, scalable web apps and automation solutions. With real-world experience in AWS, Node.js, React.js, and Microsoft Power Automate, I’m driven to create efficient systems that merge business logic with technical excellence.`;
+export const HERO_CONTENT = `I'm a full stack developer and cloud enthusiast passionate about building secure, scalable web apps and automation solutions. With real-world experience in AWS, Node.js, React.js, and Microsoft Power Automate, I'm driven to create efficient systems that merge business logic with technical excellence.`;
 
 export const ABOUT_TEXT = `I'm currently pursuing my Master's in Computer Science at Georgia State University, after completing a Bachelor's in Computer Information Systems. My experience spans software engineering, DevOps, automation, and data analytics — including internships at Swivl, Paces Ferry Wealth Advisors, and Georgia State. I specialize in developing cloud-native applications and streamlining workflows using tools like AWS, React.js, Node.js, Python, and Power Platform. Outside of coding, I enjoy exploring new tech, contributing to open source, and building tools that simplify everyday life.`;
 
@@ -41,28 +38,28 @@ export const EXPERIENCES = [
 export const PROJECTS = [
   {
     title: "Mobile App Dev (iOS/Android)",
-    image: project1,
+    image: S3_IMAGES.projects.project1,
     description:
       "Developed cross-platform mobile applications using Java, Swift, Core Data, and SQLite. Led CI/CD setup, testing, debugging, and store deployment.",
     technologies: ["Java", "Swift", "Xcode", "SQLite", "CI/CD"],
   },
   {
     title: "Bazaar – Healthy Food Everywhere",
-    image: project2,
+    image: S3_IMAGES.projects.project2,
     description:
       "Created a full-stack app for locating healthy food options. Used HTML, CSS, Bootstrap for UI and optimized backend performance with Node.js and MongoDB.",
     technologies: ["HTML", "CSS", "Node.js", "MongoDB", "Express.js"],
   },
   {
     title: "Automation Workflow System",
-    image: project3,
+    image: S3_IMAGES.projects.project3,
     description:
       "Designed automation workflows using Microsoft Power Automate and Zapier for internal operations. Integrated Python/JavaScript scripts for dynamic task handling.",
     technologies: ["Power Automate", "Zapier", "Python", "JavaScript"],
   },
   {
     title: "CI/CD + AWS App Deployment",
-    image: project4,
+    image: S3_IMAGES.projects.project4,
     description:
       "Developed and deployed secure applications on AWS EC2 with CI/CD pipelines using Bitbucket. Integrated AWS services for monitoring and identity management.",
     technologies: ["AWS", "Bitbucket", "EC2", "CI/CD", "Cognito"],
