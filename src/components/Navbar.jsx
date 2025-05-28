@@ -1,7 +1,7 @@
-import logo from "../assets/logo.png";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import { S3_IMAGES } from "../constants/s3";
 
 // Floating + entrance for logo
 const logoFloat = {
@@ -65,7 +65,7 @@ const Navbar = () => {
         animate={logoFloat.animate}
         transition={logoFloat.transition}
       >
-        <img className="mx-3 w-20" src={logo} alt="logo" />
+        <img className="mx-3 w-20" src={S3_IMAGES.logo} alt="logo" />
       </motion.div>
 
       {/* Social Icons */}
