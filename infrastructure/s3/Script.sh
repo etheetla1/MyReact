@@ -5,8 +5,8 @@ BUCKET_NAME="knowelist.com"  # Set your unique bucket name
 REGION="us-east-1"                   # Set your AWS region
 PROFILE="default"                    # Set your AWS CLI profile
 
-# Create the S3 bucket
-aws s3 mb s3://$BUCKET_NAME --region $REGION --profile $PROFILE
+# Create the S3 bucket (if it doesn't exist)
+aws s3 mb s3://$BUCKET_NAME --region $REGION --profile $PROFILE 2>/dev/null || echo "Bucket already exists"
 
 # Set bucket policy to public
 aws s3api put-bucket-policy --bucket $BUCKET_NAME --policy '{
@@ -23,49 +23,76 @@ aws s3api put-bucket-policy --bucket $BUCKET_NAME --policy '{
 }' --profile $PROFILE
 
 # Create folder structure
-aws s3api put-object --bucket $BUCKET_NAME --key "public/images/" --profile $PROFILE
-aws s3api put-object --bucket $BUCKET_NAME --key "public/icons/" --profile $PROFILE
-aws s3api put-object --bucket $BUCKET_NAME --key "public/data/" --profile $PROFILE
-aws s3api put-object --bucket $BUCKET_NAME --key "ai-chatbot/documents/" --profile $PROFILE
+aws s3api put-object --bucket $BUCKET_NAME --key "images/" --profile $PROFILE 2>/dev/null || echo "Images folder exists"
+aws s3api put-object --bucket $BUCKET_NAME --key "images/projects/" --profile $PROFILE 2>/dev/null || echo "Projects folder exists"
 
-# Upload example images
-if [ -f "../../src/assets/elishaTheetlaProfile1.png" ]; then
-  aws s3 cp ../../src/assets/elishaTheetlaProfile1.png s3://$BUCKET_NAME/public/images/profile.jpg --profile $PROFILE
-fi
-if [ -f "../../src/assets/projects/project1.png" ]; then
-  aws s3 cp ../../src/assets/projects/project1.png s3://$BUCKET_NAME/public/images/project1.png --profile $PROFILE
-fi
+# Upload images from dist folder (after build)
+echo "Uploading images from dist folder..."
 
-# Upload example icon
-if [ -f "../../public/favicon.svg" ]; then
-  aws s3 cp ../../public/favicon.svg s3://$BUCKET_NAME/public/icons/favicon.svg --profile $PROFILE
+# Profile image
+if [ -f "../../dist/assets/elishaTheetlaProfile1-B_DaAWug.png" ]; then
+  aws s3 cp ../../dist/assets/elishaTheetlaProfile1-B_DaAWug.png s3://$BUCKET_NAME/images/elishaTheetlaProfile1.png --profile $PROFILE
+  echo "✓ Profile image uploaded"
+else
+  echo "⚠ Profile image not found in dist/assets/"
 fi
 
-# Upload example data files
-if [ -f "../../public/data/hero.json" ]; then
-  aws s3 cp ../../public/data/hero.json s3://$BUCKET_NAME/public/data/hero.json --profile $PROFILE
-fi
-if [ -f "../../public/data/projects.json" ]; then
-  aws s3 cp ../../public/data/projects.json s3://$BUCKET_NAME/public/data/projects.json --profile $PROFILE
-fi
-if [ -f "../../public/data/tech.json" ]; then
-  aws s3 cp ../../public/data/tech.json s3://$BUCKET_NAME/public/data/tech.json --profile $PROFILE
-fi
-if [ -f "../../public/data/about.json" ]; then
-  aws s3 cp ../../public/data/about.json s3://$BUCKET_NAME/public/data/about.json --profile $PROFILE
+# About image
+if [ -f "../../dist/assets/about-Cs4bjHyo.jpg" ]; then
+  aws s3 cp ../../dist/assets/about-Cs4bjHyo.jpg s3://$BUCKET_NAME/images/about.jpg --profile $PROFILE
+  echo "✓ About image uploaded"
+else
+  echo "⚠ About image not found in dist/assets/"
 fi
 
-# Upload example ai-chatbot document
-if [ -f "../../ai-chatbot/documents/your-rag-sources.pdf" ]; then
-  aws s3 cp ../../ai-chatbot/documents/your-rag-sources.pdf s3://$BUCKET_NAME/ai-chatbot/documents/your-rag-sources.pdf --profile $PROFILE
-fi
-if [ -f "../../vector-db-export.json" ]; then
-  aws s3 cp ../../vector-db-export.json s3://$BUCKET_NAME/vector-db-export.json --profile $PROFILE
+# Logo image
+if [ -f "../../dist/assets/logo-WdAiZ-lu.png" ]; then
+  aws s3 cp ../../dist/assets/logo-WdAiZ-lu.png s3://$BUCKET_NAME/images/logo.png --profile $PROFILE
+  echo "✓ Logo image uploaded"
+else
+  echo "⚠ Logo image not found in dist/assets/"
 fi
 
-echo "S3 folder structure and example files uploaded!"
-echo "Example URLs:"
-echo "Profile Image: https://$BUCKET_NAME.s3.$REGION.amazonaws.com/public/images/profile.jpg"
-echo "Project Image: https://$BUCKET_NAME.s3.$REGION.amazonaws.com/public/images/project1.png"
-echo "Hero Data: https://$BUCKET_NAME.s3.$REGION.amazonaws.com/public/data/hero.json"
-echo "AI Chatbot PDF: https://$BUCKET_NAME.s3.$REGION.amazonaws.com/ai-chatbot/documents/your-rag-sources.pdf"
+# Project images
+if [ -f "../../dist/assets/project-1-hgWJFOHx.jpg" ]; then
+  aws s3 cp ../../dist/assets/project-1-hgWJFOHx.jpg s3://$BUCKET_NAME/images/projects/project-1.jpg --profile $PROFILE
+  echo "✓ Project 1 image uploaded"
+else
+  echo "⚠ Project 1 image not found in dist/assets/"
+fi
+
+if [ -f "../../dist/assets/project-2-Dsim69lq.jpg" ]; then
+  aws s3 cp ../../dist/assets/project-2-Dsim69lq.jpg s3://$BUCKET_NAME/images/projects/project-2.jpg --profile $PROFILE
+  echo "✓ Project 2 image uploaded"
+else
+  echo "⚠ Project 2 image not found in dist/assets/"
+fi
+
+if [ -f "../../dist/assets/project-3-DJqjiGhQ.jpg" ]; then
+  aws s3 cp ../../dist/assets/project-3-DJqjiGhQ.jpg s3://$BUCKET_NAME/images/projects/project-3.jpg --profile $PROFILE
+  echo "✓ Project 3 image uploaded"
+else
+  echo "⚠ Project 3 image not found in dist/assets/"
+fi
+
+if [ -f "../../dist/assets/project-4-D2aQLXBi.jpg" ]; then
+  aws s3 cp ../../dist/assets/project-4-D2aQLXBi.jpg s3://$BUCKET_NAME/images/projects/project-4.jpg --profile $PROFILE
+  echo "✓ Project 4 image uploaded"
+else
+  echo "⚠ Project 4 image not found in dist/assets/"
+fi
+
+echo ""
+echo "🎉 S3 upload complete!"
+echo ""
+echo "📁 Images uploaded to:"
+echo "   Profile: https://$BUCKET_NAME.s3.$REGION.amazonaws.com/images/elishaTheetlaProfile1.png"
+echo "   About: https://$BUCKET_NAME.s3.$REGION.amazonaws.com/images/about.jpg"
+echo "   Logo: https://$BUCKET_NAME.s3.$REGION.amazonaws.com/images/logo.png"
+echo "   Projects: https://$BUCKET_NAME.s3.$REGION.amazonaws.com/images/projects/"
+echo ""
+echo "🌐 CloudFront URLs (recommended):"
+echo "   Profile: https://d2f1f8uiawofsx.cloudfront.net/images/elishaTheetlaProfile1.png"
+echo "   About: https://d2f1f8uiawofsx.cloudfront.net/images/about.jpg"
+echo "   Logo: https://d2f1f8uiawofsx.cloudfront.net/images/logo.png"
+echo "   Projects: https://d2f1f8uiawofsx.cloudfront.net/images/projects/"
