@@ -3,7 +3,7 @@ export const S3_BASE_URL = 'https://d2f1f8uiawofsx.cloudfront.net';
 
 // Image URLs
 export const S3_IMAGES = {
-  profile: `${S3_BASE_URL}/images/elishaTheetlaProfile1.png`,
+  profile: `${S3_BASE_URL}/images/elishaTheetlaProfile.png`,
   about: `${S3_BASE_URL}/images/about.jpg`,
   projects: {
     project1: `${S3_BASE_URL}/images/projects/project-1.jpg`,
