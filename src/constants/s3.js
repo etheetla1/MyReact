@@ -10,6 +10,7 @@ export const S3_IMAGES = {
     project2: `${S3_BASE_URL}/images/projects/project-2.jpg`,
     project3: `${S3_BASE_URL}/images/projects/project-3.jpg`,
     project4: `${S3_BASE_URL}/images/projects/project-4.jpg`,
+    project5: `${S3_BASE_URL}/images/projects/knowelist.png`,
   },
   logo: `${S3_BASE_URL}/images/logo.png`,
 }; 
