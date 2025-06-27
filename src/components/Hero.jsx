@@ -50,7 +50,7 @@ const Hero = () => {
             animate="visible"
             className="text-lg text-gray-700 mb-4 text-left max-w-2xl"
           >
-            I'm Elisha Theetla — a full-stack engineer and cloud specialist who transforms ideas into scalable, secure, and smart applications. Whether it's launching AI-driven solutions, automating workflows, or deploying full-stack apps with AWS and React, I bring deep curiosity, product intuition, and technical precision to every project.
+           Whether it's launching AI-driven solutions, automating workflows, or deploying full-stack apps with AWS and React, I bring deep curiosity, product intuition, and technical precision to every project.
           </motion.p>
           <motion.p
             variants={container(0.3)}
