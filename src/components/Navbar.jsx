@@ -68,6 +68,13 @@ const Navbar = () => {
         <img className="mx-3 w-20" src={S3_IMAGES.logo} alt="logo" />
       </motion.div>
 
+      {/* Name Centered */}
+      <div className="flex-1 flex justify-center">
+        <span className="text-4xl lg:text-6xl font-thin tracking-tight font-serif text-gray-900 select-none">
+          Elisha Theetla
+        </span>
+      </div>
+
       {/* Social Icons */}
       <div className="m-8 flex items-center justify-center gap-6 text-2xl">
         {/* LinkedIn */}

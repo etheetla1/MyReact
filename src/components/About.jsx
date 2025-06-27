@@ -63,7 +63,11 @@ const About = () => {
             viewport={{ once: true }}
             className="flex justify-center lg:justify-start"
           >
-            <p className="my-2 max-w-xl py-6 text-neutral-400">{ABOUT_TEXT}</p>
+            <div className="my-2 max-w-xl py-6" style={{ color: '#2C3E50' }}>
+              {ABOUT_TEXT.split(/\n\n+/).map((para, idx) => (
+                <p key={idx} className="mb-4 last:mb-0">{para}</p>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>

@@ -71,7 +71,7 @@ const Projects = () => {
               viewport={{ once: true }}
             >
               <h6 className="mb-2 font-semibold">{project.title}</h6>
-              <p className="mb-4 text-neutral-400">{project.description}</p>
+              <p className="mb-4" style={{ color: '#2C3E50' }}>{project.description}</p>
 
               <div className="flex flex-wrap">
                 {project.technologies.map((tech, techIndex) => (

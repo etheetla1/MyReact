@@ -34,7 +34,7 @@ const Experience = () => {
         >
           {/* Year */}
           <div className="w-full lg:w-1/4">
-            <p className="mb-2 text-sm text-neutral-400">{experience.year}</p>
+            <p className="mb-2 text-sm" style={{ color: '#2C3E50' }}>{experience.year}</p>
           </div>
 
           {/* Details */}
