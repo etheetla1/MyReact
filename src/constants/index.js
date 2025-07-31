@@ -80,5 +80,12 @@ export const PROJECTS = [
 export const CONTACT = {
   address: "Atlanta, GA",
   phoneNo: "470-507-9314",
-  email: "etheetla1@student.gsu.edu",
+  email: "elishasuhas1221@gmail.com",
+};
+
+export const SOCIAL_LINKS = {
+  linkedin: "https://linkedin.com/in/elisha-theetla",
+  instagram: "https://instagram.com/elisha_theetla",
+  twitter: "https://twitter.com/elisha_theetla",
+  github: "https://github.com/etheetla1",
 };

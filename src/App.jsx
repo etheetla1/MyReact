@@ -1,28 +1,48 @@
-import Navbar from "./components/Navbar"
+import { Routes, Route } from 'react-router-dom'
 import Hero from "./components/Hero"
 import About from "./components/About"
-import Technologies from "./components/Technologies";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
+import Experience from "./components/Experience"
+import Technologies from "./components/Technologies"
+import Contact from "./components/Contact"
+import MenuOverlay from "./components/MenuOverlay"
+import { useState } from 'react'
+
+import Blogs from "./components/Blogs"
 
 const App = () => {
-  return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-[var(--apple-bg)] text-neutral-900 antialiased selection:bg-cyan-300 selection:text-cyan-900">
-      
-      {/* Grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] z-0" />
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-      {/* Main content */}
-      <div className="relative z-10 container mx-auto px-8">
-        <Navbar />
-        <Hero />
-        <About />
-        <Technologies />
-        <Experience />
-        <Projects />
-        <Contact />
-      </div>
+  return (
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-black text-white antialiased">
+      
+      {/* Top Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center p-6">
+        <div className="text-2xl font-light">
+          <a href="/" className="hover:text-gray-300 transition-colors">
+            Elisha.
+          </a>
+        </div>
+        <button
+          onClick={() => setIsMenuOpen(true)}
+          className="flex items-center space-x-2 text-sm font-medium hover:text-gray-300 transition-colors"
+        >
+          <span>MENU</span>
+          <span className="text-lg">☰</span>
+        </button>
+      </nav>
+
+      {/* Menu Overlay */}
+      <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+
+      {/* Main Content */}
+      <Routes>
+        <Route path="/" element={<Hero />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/experience" element={<Experience />} />
+        <Route path="/technologies" element={<Technologies />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
       
     </div>
   );

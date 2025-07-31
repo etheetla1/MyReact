@@ -1,71 +1,97 @@
 import { EXPERIENCES } from "../constants";
-import { motion } from "framer-motion";
-
-const container = (delay = 0) => ({
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay },
-  },
-});
+import { PageHeader, AnimatedSection, Footer } from "./common";
+import { theme } from "../styles/theme";
+import { cn } from "../lib/utils";
 
 const Experience = () => {
   return (
-    <div className="border-b border-neutral-900 pb-4">
-      <motion.h1
-        className="my-20 text-center text-4xl"
-        variants={container(0)}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        Experience
-      </motion.h1>
+    <div className={theme.layout.page}>
+      <div className={theme.layout.container}>
+        <PageHeader
+          title="Experience"
+          subtitle="My professional journey in software development and cloud engineering"
+        />
 
-      {EXPERIENCES.map((experience, index) => (
-        <motion.div
-          key={index}
-          className="mb-8 flex flex-wrap lg:justify-center"
-          variants={container(index * 0.2 + 0.2)} // stagger each item
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {/* Year */}
-          <div className="w-full lg:w-1/4">
-            <p className="mb-2 text-sm" style={{ color: '#2C3E50' }}>{experience.year}</p>
-          </div>
+        <div className="space-y-12">
+          {EXPERIENCES.map((experience, index) => (
+            <AnimatedSection
+              key={index}
+              delay={index * 0.2}
+              direction={index % 2 === 0 ? "slideLeft" : "slideRight"}
+            >
+              <div className={cn(
+                "relative p-8 rounded-lg",
+                theme.components.card,
+                "hover:scale-[1.02] transition-transform duration-300"
+              )}>
+                {/* Timeline indicator */}
+                <div className="absolute -left-4 top-8 w-8 h-8 bg-white rounded-full border-4 border-black flex items-center justify-center">
+                  <div className="w-2 h-2 bg-black rounded-full" />
+                </div>
 
-          {/* Details */}
-          <div className="w-full max-w-xl lg:w-3/4">
-            <h6 className="mb-2 font-semibold">
-              {experience.role} -{" "}
-              <span className="text-sm text-purple-900">
-                {experience.company}
-              </span>
-            </h6>
+                {/* Experience Header */}
+                <div className="mb-6">
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-2">
+                    <h3 className={cn(theme.typography.subheading, "text-white")}>
+                      {experience.role}
+                    </h3>
+                    <span className={cn(
+                      "text-sm font-medium px-3 py-1 rounded-full",
+                      "bg-white/10 text-gray-300 border border-white/20"
+                    )}>
+                      {experience.year}
+                    </span>
+                  </div>
+                  
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                    <h4 className={cn(theme.typography.body, "text-gray-300 font-medium")}>
+                      {experience.company}
+                    </h4>
+                    <span className="text-sm text-gray-500">
+                      {experience.location}
+                    </span>
+                  </div>
+                </div>
 
-            <p className="mb-4" style={{ color: '#2C3E50' }}>{experience.description}</p>
+                {/* Experience Description */}
+                <div className="mb-6">
+                  {experience.description.split('\n').map((paragraph, pIndex) => (
+                    <p key={pIndex} className={cn(theme.typography.body, "mb-3 leading-relaxed")}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
 
-            {/* Technologies */}
-            <div className="flex flex-wrap">
-              {experience.technologies.map((tech, techIndex) => (
-                <motion.span
-                  key={techIndex}
-                  className="mr-4 mt-4 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-800"
-                  variants={container(techIndex * 0.05)}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                >
-                  {tech}
-                </motion.span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      ))}
+                {/* Technologies */}
+                <div>
+                  <h5 className={cn(theme.typography.bodySmall, "text-white mb-3")}>
+                    Technologies & Tools:
+                  </h5>
+                  <div className="flex flex-wrap gap-2">
+                    {experience.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className={cn(
+                          "px-3 py-1 text-xs font-medium rounded-full",
+                          "bg-white/5 text-gray-400 border border-white/10",
+                          "hover:bg-white/10 hover:text-gray-300 transition-all duration-300"
+                        )}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+
+        {/* Timeline line */}
+        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent ml-4 hidden lg:block" />
+        
+        <Footer />
+      </div>
     </div>
   );
 };

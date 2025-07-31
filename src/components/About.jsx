@@ -1,75 +1,123 @@
 import { ABOUT_TEXT } from "../constants";
+import { PageHeader, AnimatedSection, OptimizedImage, Footer } from "./common";
 import { S3_IMAGES } from "../constants/s3";
-import { motion } from "framer-motion";
-
-const container = (delay = 0) => ({
-  hidden: { opacity: 0, y: -20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay },
-  },
-});
-
-const slideLeft = (delay = 0) => ({
-  hidden: { opacity: 0, x: -50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, delay },
-  },
-});
-
-const slideRight = (delay = 0) => ({
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, delay },
-  },
-});
+import { theme } from "../styles/theme";
+import { cn } from "../lib/utils";
 
 const About = () => {
+  // Split the about text into paragraphs for better formatting
+  const paragraphs = ABOUT_TEXT.split('\n\n');
+
   return (
-    <div className="border-b border-neutral-900 pb-4">
-      <motion.h2
-        variants={container(0)}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="my-20 text-center text-4xl"
-      >
-        About <span className="text-neutral-500">Me</span>
-      </motion.h2>
+    <div className={theme.layout.page}>
+      <div className={theme.layout.container}>
+        <PageHeader
+          title="About Me"
+          subtitle="Get to know the person behind the code"
+        />
 
-      <div className="flex flex-wrap">
-        <div className="w-full lg:w-1/2 lg:p-8">
-          <motion.div
-            variants={slideLeft(0.2)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex items-center justify-center"
-          >
-            <img className="rounded-2xl" src={S3_IMAGES.about} alt="about" />
-          </motion.div>
-        </div>
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Left: Text Content */}
+          <div className="space-y-6">
+            {paragraphs.map((paragraph, index) => (
+              <AnimatedSection
+                key={index}
+                delay={index * 0.2}
+                direction="slideLeft"
+              >
+                <p className={cn(theme.typography.body, "leading-relaxed")}>
+                  {paragraph}
+                </p>
+              </AnimatedSection>
+            ))}
 
-        <div className="w-full lg:w-1/2">
-          <motion.div
-            variants={slideRight(0.4)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex justify-center lg:justify-start"
-          >
-            <div className="my-2 max-w-xl py-6" style={{ color: '#2C3E50' }}>
-              {ABOUT_TEXT.split(/\n\n+/).map((para, idx) => (
-                <p key={idx} className="mb-4 last:mb-0">{para}</p>
-              ))}
+            {/* Skills Highlight */}
+            <AnimatedSection delay={0.8} direction="slideLeft">
+              <div className="pt-8">
+                <h3 className={cn(theme.typography.heading, "mb-6 text-white")}>
+                  Core Expertise
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    "Full-Stack Development",
+                    "Cloud Architecture",
+                    "DevOps & Automation",
+                    "AI/ML Integration",
+                    "System Design",
+                    "Performance Optimization"
+                  ].map((skill, index) => (
+                    <div
+                      key={index}
+                      className={cn(
+                        "flex items-center space-x-3 p-3 rounded-lg",
+                        theme.components.card
+                      )}
+                    >
+                      <div className="w-2 h-2 bg-white rounded-full" />
+                      <span className={theme.typography.bodySmall}>
+                        {skill}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          {/* Right: Image */}
+          <AnimatedSection delay={0.4} direction="slideRight">
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative">
+                <OptimizedImage
+                  src={S3_IMAGES.profile}
+                  alt="Elisha Theetla - About"
+                  className={cn(
+                    "w-80 h-96 lg:w-96 lg:h-[500px] object-cover rounded-lg",
+                    "grayscale hover:grayscale-0",
+                    theme.animations.transitionSlow
+                  )}
+                />
+                {/* Decorative border */}
+                <div className="absolute -inset-4 border border-white/20 rounded-lg -z-10" />
+              </div>
             </div>
-          </motion.div>
+          </AnimatedSection>
         </div>
+
+        {/* Education & Certifications */}
+        <AnimatedSection delay={1.0}>
+          <div className="mt-20 pt-16 border-t border-white/10">
+            <h3 className={cn(theme.typography.heading, "mb-8 text-center text-white")}>
+              Education & Background
+            </h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className={cn("p-6 rounded-lg", theme.components.card)}>
+                <h4 className={cn(theme.typography.subheading, "text-white mb-2")}>
+                  Master's in Computer Science
+                </h4>
+                <p className={theme.typography.bodySmall}>
+                  Georgia State University
+                </p>
+                <p className="text-gray-500 text-sm mt-1">
+                  Current
+                </p>
+              </div>
+              <div className={cn("p-6 rounded-lg", theme.components.card)}>
+                <h4 className={cn(theme.typography.subheading, "text-white mb-2")}>
+                  BBA in Computer Information Systems
+                </h4>
+                <p className={theme.typography.bodySmall}>
+                  Georgia State University
+                </p>
+                <p className="text-gray-500 text-sm mt-1">
+                  Completed
+                </p>
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        <Footer />
       </div>
     </div>
   );

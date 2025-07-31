@@ -1,71 +1,99 @@
-import { S3_IMAGES } from "../constants/s3";
 import { motion } from "framer-motion";
-
-const container = (delay = 0) => ({
-  hidden: { x: -100, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { duration: 0.5, delay },
-  },
-});
+import { S3_IMAGES } from "../constants/s3";
+import { AnimatedSection, Badge, OptimizedImage, Footer } from "./common";
+import { useAnimations } from "../hooks/useAnimations";
+import { theme } from "../styles/theme";
+import { cn } from "../lib/utils";
 
 const Hero = () => {
+  const animations = useAnimations();
+
+  const handleGetInTouch = () => {
+    window.location.href = 'mailto:elishasuhas1221@gmail.com';
+  };
+
   return (
-    <div className="border-b border-neutral-900 pb-4 lg:mb-35 bg-white">
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-between min-h-[60vh]">
-        {/* Left: Text Block */}
-        <div className="w-full lg:w-1/2 flex flex-col items-start justify-center px-4 lg:px-12 py-12">
-          <motion.h1
-            variants={container(0)}
-            initial="hidden"
-            animate="visible"
-            className="text-5xl font-bold mb-2 text-gray-900 text-left"
-          >
-            I don't just build software. I build systems that solve.
-          </motion.h1>
+    <div className="min-h-screen flex flex-col bg-black text-white">
+      {/* Main Content - Centered */}
+      <div className="flex-1 flex items-center justify-center">
+        <div className={theme.layout.container}>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Left: Text Content */}
+            <div className="space-y-8">
+              {/* Experience Badge */}
+              <AnimatedSection delay={0}>
+                <Badge>
+                  +4 YEARS OF EXPERIENCE
+                </Badge>
+              </AnimatedSection>
 
-          <motion.div
-            variants={container(0.3)}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-wrap items-center gap-2 mb-4"
-          >
-            <span className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent">
-              Full Stack Developer
-            </span>
-            <span className="text-2xl text-gray-400 mx-1">&bull;</span>
-            <span className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent">
-              Architect.
-            </span>
-            <span className="text-2xl text-gray-400 mx-1">&bull;</span>
-            <span className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-4xl tracking-tight text-transparent">
-              Problem Solver.
-            </span>
-          </motion.div>
+              {/* Name */}
+              <AnimatedSection delay={0.2} direction="container">
+                <h1 className={cn(theme.typography.hero, "leading-tight")}>
+                  Elisha Theetla
+                </h1>
+              </AnimatedSection>
 
-          <motion.p
-            variants={container(0.2)}
-            initial="hidden"
-            animate="visible"
-            className="text-lg text-gray-700 mb-4 text-left max-w-2xl"
-          >
-           Whether it's launching AI-driven solutions, automating workflows, or deploying full-stack apps with AWS and React, I bring deep curiosity, product intuition, and technical precision to every project.
-          </motion.p>
-          <motion.p
-            variants={container(0.3)}
-            initial="hidden"
-            animate="visible"
-            className="text-lg text-gray-700 text-left max-w-2xl"
-          >
-            From startup hustle to enterprise reliability — I code, architect, and automate with purpose. Let's turn your next idea into something powerful.
-          </motion.p>
+              {/* Title */}
+              <AnimatedSection delay={0.4} direction="container">
+                <h2 className={cn(theme.typography.heading, "text-gray-300")}>
+                  Cloud-Native Full Stack Developer
+                </h2>
+              </AnimatedSection>
+
+              {/* Subtext */}
+              <AnimatedSection delay={0.6} direction="container">
+                <p className={cn(theme.typography.body, "max-w-2xl leading-relaxed")}>
+                  Creative full stack developer mainly working on cloud-native solutions, DevOps automation, AI-driven applications, and serverless architectures.
+                </p>
+              </AnimatedSection>
+
+              {/* Get in Touch Button */}
+              <AnimatedSection delay={0.8} direction="container">
+                <button
+                  onClick={handleGetInTouch}
+                  className={theme.components.button.primary}
+                >
+                  GET IN TOUCH
+                  <svg 
+                    className="ml-3 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+              </AnimatedSection>
+            </div>
+
+            {/* Right: Portrait Image */}
+            <motion.div
+              variants={animations.imageContainer}
+              initial="hidden"
+              animate="visible"
+              className="flex justify-center lg:justify-end"
+            >
+              <div className="relative">
+                <OptimizedImage
+                  src={S3_IMAGES.profile}
+                  alt="Elisha Theetla"
+                  className={cn(
+                    "w-80 h-96 lg:w-96 lg:h-[500px] object-cover",
+                    "grayscale hover:grayscale-0",
+                    theme.animations.transitionSlow
+                  )}
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
+      </div>
 
-        {/* Right: Profile Image (cityscape daytime) */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center min-h-[300px] lg:min-h-[400px] py-8">
-          <img src={S3_IMAGES.profile} alt="Elisha Theetla" className="rounded-xl object-cover max-w-sm w-full h-auto shadow-lg" />
-        </div>
+      {/* Footer */}
+      <div className={theme.layout.container}>
+        <Footer />
       </div>
     </div>
   );

@@ -1,65 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   font-family: "Inter", sans-serif;
-  --apple-bg: #F5F5F7;
-  --apple-white: #FFFFFF;
-  --apple-black: #1D1D1F;
-  --apple-gray: #6E6E73;
-  --apple-accent: #0071E3;
-  --apple-border: #D2D2D7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--apple-bg);
-  color: var(--apple-black);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  background: #000000;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--apple-black);
-  font-weight: 600;
+html {
+  scroll-behavior: smooth;
 }
 
-.secondary, .subtitle, .description {
-  color: var(--apple-gray);
+/* Override any default styles */
+#root {
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
 }
 
-button, .btn {
-  background: var(--apple-accent);
-  color: var(--apple-white);
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-button:hover, .btn:hover {
-  background: #005bb5;
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 10%;
+    --ring: 0 0% 80%;
+    --radius: 0.5rem;
+  }
 }
 
-.card, .container {
-  background: var(--apple-white);
-  border: 1px solid var(--apple-border);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(60,60,67,0.03);
-  padding: 24px;
-}
-
-a {
-  color: var(--apple-accent);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-a:hover {
-  color: #005bb5;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-black text-white;
+  }
 }
