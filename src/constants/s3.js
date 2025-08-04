@@ -1,5 +1,5 @@
-// CloudFront distribution URL
-export const S3_BASE_URL = 'https://d2f1f8uiawofsx.cloudfront.net';
+// CloudFront distribution URL from environment variables
+export const S3_BASE_URL = import.meta.env.VITE_CDN_URL || 'https://d2f1f8uiawofsx.cloudfront.net';
 
 // Image URLs
 export const S3_IMAGES = {
@@ -13,4 +13,4 @@ export const S3_IMAGES = {
     project5: `${S3_BASE_URL}/images/projects/knowelist.png`,
   },
   logo: `${S3_BASE_URL}/images/logo.png`,
-}; 
+};

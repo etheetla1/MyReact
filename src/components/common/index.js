@@ -4,3 +4,5 @@ export { TechCard } from './TechCard';
 export { PageHeader } from './PageHeader';
 export { OptimizedImage } from './OptimizedImage';
 export { default as Footer } from './Footer';
+export { default as ErrorBoundary } from './ErrorBoundary';
+export { default as SEOHead } from './SEOHead';

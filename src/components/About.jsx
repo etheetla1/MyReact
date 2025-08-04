@@ -1,5 +1,5 @@
 import { ABOUT_TEXT } from "../constants";
-import { PageHeader, AnimatedSection, OptimizedImage, Footer } from "./common";
+import { PageHeader, AnimatedSection, OptimizedImage, Footer, SEOHead } from "./common";
 import { S3_IMAGES } from "../constants/s3";
 import { theme } from "../styles/theme";
 import { cn } from "../lib/utils";
@@ -9,7 +9,14 @@ const About = () => {
   const paragraphs = ABOUT_TEXT.split('\n\n');
 
   return (
-    <div className={theme.layout.page}>
+    <>
+      <SEOHead 
+        title="About Me"
+        description="Learn about Elisha Theetla, a full-stack developer and cloud engineer with expertise in AWS, React, Node.js, Python, and AI-powered solutions. Currently pursuing Master's in Computer Science at Georgia State University."
+        keywords="About Elisha Theetla, Full Stack Developer Background, Cloud Engineer Experience, Georgia State University, Computer Science, AWS Expert"
+        url="/about"
+      />
+      <div className={theme.layout.page}>
       <div className={theme.layout.container}>
         <PageHeader
           title="About Me"
@@ -120,6 +127,7 @@ const About = () => {
         <Footer />
       </div>
     </div>
+    </>
   );
 };
 

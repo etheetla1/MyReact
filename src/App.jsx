@@ -5,9 +5,9 @@ import Experience from "./components/Experience"
 import Technologies from "./components/Technologies"
 import Contact from "./components/Contact"
 import MenuOverlay from "./components/MenuOverlay"
-import { useState } from 'react'
-
 import Blogs from "./components/Blogs"
+import { ErrorBoundary } from "./components/common"
+import { useState } from 'react'
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -35,14 +35,16 @@ const App = () => {
       <MenuOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
       {/* Main Content */}
-      <Routes>
-        <Route path="/" element={<Hero />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/experience" element={<Experience />} />
-        <Route path="/technologies" element={<Technologies />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/technologies" element={<Technologies />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </ErrorBoundary>
       
     </div>
   );
