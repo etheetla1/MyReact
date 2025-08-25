@@ -20,7 +20,7 @@ const Hero = () => {
         keywords="Full Stack Developer, Cloud Engineer, AWS, React, Node.js, Python, TypeScript, DevOps, AI, Machine Learning, Atlanta"
         url="/"
       />
-        <div className="min-h-screen flex flex-col bg-black text-white">
+        <div className="min-h-screen flex flex-col bg-black text-white pt-20">
           {/* Main Content - Centered */}
           <div className="flex-1 flex items-center justify-center">
             <div className={theme.layout.container}>
