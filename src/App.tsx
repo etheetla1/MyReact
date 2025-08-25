@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Hero from "./components/Hero"
 import About from "./components/About"
@@ -7,7 +8,6 @@ import Contact from "./components/Contact"
 import MenuOverlay from "./components/MenuOverlay"
 import Blogs from "./components/Blogs"
 import { ErrorBoundary } from "./components/common"
-import { useState } from 'react'
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

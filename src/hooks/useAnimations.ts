@@ -1,6 +1,56 @@
 import { useMemo } from 'react';
 
-export const useAnimations = () => {
+interface AnimationVariant {
+  hidden: {
+    opacity?: number;
+    y?: number;
+    x?: number;
+    scale?: number;
+  };
+  visible: {
+    opacity?: number;
+    y?: number;
+    x?: number;
+    scale?: number;
+    transition: {
+      duration?: number;
+      delay?: number;
+      ease?: string;
+      staggerChildren?: number;
+      delayChildren?: number;
+    };
+  };
+}
+
+interface ItemVariant {
+  hidden: {
+    opacity: number;
+    scale: number;
+  };
+  visible: (i: number) => {
+    opacity: number;
+    scale: number;
+    transition: {
+      delay: number;
+      duration: number;
+      ease: string;
+    };
+  };
+}
+
+interface AnimationHook {
+  fadeIn: (delay?: number) => AnimationVariant;
+  fadeInUp: (delay?: number) => AnimationVariant;
+  slideLeft: (delay?: number) => AnimationVariant;
+  slideRight: (delay?: number) => AnimationVariant;
+  container: (delay?: number) => AnimationVariant;
+  imageContainer: AnimationVariant;
+  itemVariants: ItemVariant;
+  staggerContainer: AnimationVariant;
+  staggerItem: AnimationVariant;
+}
+
+export const useAnimations = (): AnimationHook => {
   return useMemo(() => ({
     // Fade animations
     fadeIn: (delay = 0) => ({

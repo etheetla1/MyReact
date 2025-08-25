@@ -1,4 +1,5 @@
 import { S3_IMAGES } from './s3';
+import type { Project, Experience, ContactInfo, SocialLinks } from '../types';
 
 export const HERO_CONTENT = `Hi! I'm a full-stack developer and cloud engineer passionate about building secure, scalable, and intelligent web solutions. With experience spanning AWS, Node.js, React.js, Python, and automation platforms like Power Automate and Zapier, I specialize in merging business logic with technical precision. From architecting CI/CD pipelines to deploying apps on EC2 and designing RAG-based AI agents, I bring a product-driven mindset and a deep enthusiasm for innovation in every line of code.`;
 

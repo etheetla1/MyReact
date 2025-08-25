@@ -1,4 +1,6 @@
-export const theme = {
+import type { Theme } from '../types';
+
+export const theme: Theme = {
   colors: {
     primary: '#FFFFFF',
     secondary: '#9CA3AF',
@@ -60,6 +62,6 @@ export const theme = {
 };
 
 // Utility function to get theme values
-export const getTheme = (path) => {
-  return path.split('.').reduce((obj, key) => obj?.[key], theme);
+export const getTheme = (path: string): any => {
+  return path.split('.').reduce((obj: any, key: string) => obj?.[key], theme);
 };

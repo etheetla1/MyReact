@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import type { SEOHeadProps } from '../../types';
 
-const SEOHead = ({ 
+const SEOHead: React.FC<SEOHeadProps> = ({ 
   title, 
   description, 
   keywords, 
