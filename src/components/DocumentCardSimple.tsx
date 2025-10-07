@@ -1,5 +1,5 @@
-import React from 'react';
-import { FileText, Download, Eye, Award } from 'lucide-react';
+import React, { useState } from 'react';
+import { FileText, Download, Eye, Award, AlertCircle, Loader2 } from 'lucide-react';
 import { theme } from '../styles/theme';
 import { cn } from '../lib/utils';
 
@@ -10,6 +10,7 @@ interface DocumentCardSimpleProps {
   fileName: string;
   type: 'resume' | 'certificate';
   buttonStyle?: 'primary' | 'outline';
+  onError?: (error: Error) => void;
 }
 
 const DocumentCardSimple: React.FC<DocumentCardSimpleProps> = ({
@@ -18,25 +19,80 @@ const DocumentCardSimple: React.FC<DocumentCardSimpleProps> = ({
   documentUrl,
   fileName,
   type,
-  buttonStyle = 'outline'
+  buttonStyle = 'outline',
+  onError
 }) => {
-  const handleDownload = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const link = document.createElement('a');
-    link.href = documentUrl;
-    link.download = fileName;
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleError = (errorMessage: string, error?: Error) => {
+    setError(errorMessage);
+    setIsLoading(false);
+    if (onError && error) {
+      onError(error);
+    }
+    console.error(`Document ${type} error:`, errorMessage, error);
   };
 
-  const handleView = () => {
-    // Add error handling and ensure the URL is valid
-    if (documentUrl) {
+  const verifyDocumentExists = async (url: string): Promise<boolean> => {
+    try {
+      const response = await fetch(url, { method: 'HEAD' });
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const handleDownload = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      if (!documentUrl) {
+        throw new Error('Document URL is not available');
+      }
+
+      // Verify document exists before attempting download
+      const exists = await verifyDocumentExists(documentUrl);
+      if (!exists) {
+        throw new Error('Document not found or unavailable');
+      }
+
+      const link = document.createElement('a');
+      link.href = documentUrl;
+      link.download = fileName;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      setIsLoading(false);
+    } catch (error) {
+      handleError('Failed to download document', error as Error);
+    }
+  };
+
+  const handleView = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      if (!documentUrl) {
+        throw new Error('Document URL is not available');
+      }
+
+      // Verify document exists before opening
+      const exists = await verifyDocumentExists(documentUrl);
+      if (!exists) {
+        throw new Error('Document not found or unavailable');
+      }
+
       window.open(documentUrl, '_blank', 'noopener,noreferrer');
-    } else {
-      console.error('Document URL is not available');
+      setIsLoading(false);
+    } catch (error) {
+      handleError('Failed to open document', error as Error);
     }
   };
 
@@ -87,21 +143,45 @@ const DocumentCardSimple: React.FC<DocumentCardSimpleProps> = ({
         </div>
       </div>
 
+      {/* Error Message */}
+      {error && (
+        <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center gap-2">
+          <AlertCircle size={16} className="text-red-400" />
+          <span className="text-sm text-red-400">{error}</span>
+        </div>
+      )}
+
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-3">
         <button
           onClick={handleView}
-          className={getButtonClasses()}
+          disabled={isLoading}
+          className={cn(
+            getButtonClasses(),
+            isLoading && "opacity-50 cursor-not-allowed"
+          )}
         >
-          <Eye size={16} />
+          {isLoading ? (
+            <Loader2 size={16} className="animate-spin" />
+          ) : (
+            <Eye size={16} />
+          )}
           View {type === 'certificate' ? 'Certificate' : 'Resume'}
         </button>
         
         <button
           onClick={handleDownload}
-          className={getButtonClasses()}
+          disabled={isLoading}
+          className={cn(
+            getButtonClasses(),
+            isLoading && "opacity-50 cursor-not-allowed"
+          )}
         >
-          <Download size={16} />
+          {isLoading ? (
+            <Loader2 size={16} className="animate-spin" />
+          ) : (
+            <Download size={16} />
+          )}
           Download PDF
         </button>
       </div>

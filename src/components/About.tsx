@@ -1,5 +1,5 @@
 import { ABOUT_TEXT } from "../constants";
-import { PageHeader, AnimatedSection, OptimizedImage, Footer, SEOHead } from "./common";
+import { PageHeader, AnimatedSection, OptimizedImage, Footer, SEOHead, DocumentErrorBoundary } from "./common";
 import { S3_IMAGES, S3_DOCUMENTS } from "../constants/s3";
 import { theme } from "../styles/theme";
 import { cn } from "../lib/utils";
@@ -102,25 +102,33 @@ const About = () => {
           </p>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Resume Card - Outline Button Style */}
-            <DocumentCardSimple
-              title="Professional Resume"
-              description="Comprehensive overview of my experience, skills, and achievements in software development and cloud engineering."
-              documentUrl={S3_DOCUMENTS.resume}
-              fileName="ElishaTheetla-Resume-2024.pdf"
-              type="resume"
-              buttonStyle="outline"
-            />
+            {/* Resume Card - Wrapped in Error Boundary */}
+            <DocumentErrorBoundary
+              onError={(error) => console.error('Resume card error:', error)}
+            >
+              <DocumentCardSimple
+                title="Professional Resume"
+                description="Comprehensive overview of my experience, skills, and achievements in software development and cloud engineering."
+                documentUrl={S3_DOCUMENTS.resume}
+                fileName="ResumeMSCS-2024.pdf"
+                type="resume"
+                buttonStyle="outline"
+              />
+            </DocumentErrorBoundary>
             
-            {/* AWS Certification Card - Outline Button Style */}
-            <DocumentCardSimple
-              title="AWS Cloud Practitioner"
-              description="Official AWS certification demonstrating foundational cloud computing knowledge and best practices."
-              documentUrl={S3_DOCUMENTS.awsCertification}
-              fileName="AWS-Cloud-Practitioner-Certificate.pdf"
-              type="certificate"
-              buttonStyle="outline"
-            />
+            {/* AWS Certification Card - Wrapped in Error Boundary */}
+            <DocumentErrorBoundary
+              onError={(error) => console.error('Certificate card error:', error)}
+            >
+              <DocumentCardSimple
+                title="AWS Cloud Practitioner"
+                description="Official AWS certification demonstrating foundational cloud computing knowledge and best practices."
+                documentUrl={S3_DOCUMENTS.awsCertification}
+                fileName="AWS-Cloud-Practitioner-Certificate.pdf"
+                type="certificate"
+                buttonStyle="outline"
+              />
+            </DocumentErrorBoundary>
           </div>
         </div>
 
