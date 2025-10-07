@@ -26,7 +26,6 @@ const App = () => {
           onClick={() => setIsMenuOpen(true)}
           className="flex items-center space-x-2 text-sm font-medium hover:text-gray-300 transition-colors"
         >
-          <span>MENU</span>
           <span className="text-lg">☰</span>
         </button>
       </nav>

@@ -1,8 +1,9 @@
 import { ABOUT_TEXT } from "../constants";
 import { PageHeader, AnimatedSection, OptimizedImage, Footer, SEOHead } from "./common";
-import { S3_IMAGES } from "../constants/s3";
+import { S3_IMAGES, S3_DOCUMENTS } from "../constants/s3";
 import { theme } from "../styles/theme";
 import { cn } from "../lib/utils";
+import DocumentCardSimple from "./DocumentCardSimple";
 
 const About = () => {
   // Split the about text into paragraphs for better formatting
@@ -91,7 +92,39 @@ const About = () => {
           </AnimatedSection>
         </div>
 
-        {/* Education & Certifications */}
+        {/* Documents & Credentials */}
+        <div className="mt-20 pt-16 border-t border-white/10">
+          <h3 className={cn(theme.typography.heading, "mb-4 text-center text-white")}>
+            Documents & Credentials
+          </h3>
+          <p className={cn(theme.typography.bodySmall, "mb-12 text-center max-w-2xl mx-auto")}>
+            Professional qualifications and detailed background information
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Resume Card - Outline Button Style */}
+            <DocumentCardSimple
+              title="Professional Resume"
+              description="Comprehensive overview of my experience, skills, and achievements in software development and cloud engineering."
+              documentUrl={S3_DOCUMENTS.resume}
+              fileName="ElishaTheetla-Resume-2024.pdf"
+              type="resume"
+              buttonStyle="outline"
+            />
+            
+            {/* AWS Certification Card - Outline Button Style */}
+            <DocumentCardSimple
+              title="AWS Cloud Practitioner"
+              description="Official AWS certification demonstrating foundational cloud computing knowledge and best practices."
+              documentUrl={S3_DOCUMENTS.awsCertification}
+              fileName="AWS-Cloud-Practitioner-Certificate.pdf"
+              type="certificate"
+              buttonStyle="outline"
+            />
+          </div>
+        </div>
+
+        {/* Education & Background */}
         <AnimatedSection delay={1.0}>
           <div className="mt-20 pt-16 border-t border-white/10">
             <h3 className={cn(theme.typography.heading, "mb-8 text-center text-white")}>

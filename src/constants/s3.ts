@@ -14,3 +14,9 @@ export const S3_IMAGES = {
   },
   logo: `${S3_BASE_URL}/images/logo.png`,
 };
+
+// Document URLs
+export const S3_DOCUMENTS = {
+  resume: `https://s3.us-east-1.amazonaws.com/knowelist.com/documents/ResumeMSCS-2024.pdf`,
+  awsCertification: `${S3_BASE_URL}/documents/AWS Certified Cloud Practitioner certificate.pdf`,
+};
