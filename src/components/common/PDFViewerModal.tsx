@@ -14,7 +14,6 @@ import {
   Minimize2
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { theme } from '../../styles/theme';
 import workerSrc from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
 // Configure PDF.js worker with Vite's native worker import (recommended approach)
@@ -201,12 +200,6 @@ const PDFViewerModal: React.FC<PDFViewerModalProps> = ({
       currentPage: Math.min(state.numPages || 1, state.currentPage + 1) 
     });
   }, [state.currentPage, state.numPages, updateState]);
-
-  const goToPage = useCallback((page: number) => {
-    if (page >= 1 && page <= (state.numPages || 1)) {
-      updateState({ currentPage: page });
-    }
-  }, [state.numPages, updateState]);
 
   // Zoom functions
   const zoomIn = useCallback(() => {

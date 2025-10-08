@@ -22,7 +22,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     document.title = fullTitle;
 
     // Update meta tags
-    const updateMetaTag = (name, content, property = false) => {
+    const updateMetaTag = (name: string, content: string, property: boolean = false) => {
       const attribute = property ? 'property' : 'name';
       let element = document.querySelector(`meta[${attribute}="${name}"]`);
       
