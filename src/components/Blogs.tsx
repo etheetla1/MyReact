@@ -63,7 +63,7 @@ const Blogs = () => {
               Blog Coming Soon
             </h3>
             <p className={cn(theme.typography.body, "max-w-2xl mx-auto")}>
-              I'm currently working on creating valuable content about software development, 
+              I&apos;m currently working on creating valuable content about software development, 
               cloud architecture, and emerging technologies. Stay tuned for insightful articles 
               and tutorials!
             </p>

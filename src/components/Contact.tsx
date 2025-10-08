@@ -33,7 +33,7 @@ const Contact = () => {
       label: "Phone",
       value: CONTACT.phoneNo,
       action: handlePhoneClick,
-      description: "Let's have a conversation"
+      description: "Let&apos;s have a conversation"
     },
     {
       icon: (
@@ -74,7 +74,7 @@ const Contact = () => {
       <div className={theme.layout.container}>
         <PageHeader
           title="Get In Touch"
-          subtitle="Let's discuss your next project or collaboration opportunity"
+          subtitle="Let&apos;s discuss your next project or collaboration opportunity"
         />
 
         <div className="grid lg:grid-cols-2 gap-16">
@@ -83,10 +83,10 @@ const Contact = () => {
             <AnimatedSection delay={0.2} direction="slideLeft">
               <div className="space-y-6">
                 <h3 className={cn(theme.typography.heading, "text-white mb-6")}>
-                  Let's Connect
+                  Let&apos;s Connect
                 </h3>
                 <p className={cn(theme.typography.body, "leading-relaxed")}>
-                  I'm always interested in discussing new opportunities, innovative projects, 
+                  I&apos;m always interested in discussing new opportunities, innovative projects, 
                   and collaborations. Whether you have a project in mind or just want to chat 
                   about technology, feel free to reach out.
                 </p>
@@ -170,8 +170,8 @@ const Contact = () => {
                 Ready to Start?
               </h3>
               <p className={cn(theme.typography.body, "mb-8 leading-relaxed")}>
-                I'm currently available for new projects and collaborations. 
-                Let's discuss how we can work together to bring your ideas to life.
+                I&apos;m currently available for new projects and collaborations. 
+                Let&apos;s discuss how we can work together to bring your ideas to life.
               </p>
               
               <div className="space-y-4">

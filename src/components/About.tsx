@@ -141,7 +141,7 @@ const About = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div className={cn("p-6 rounded-lg", theme.components.card)}>
                 <h4 className={cn(theme.typography.subheading, "text-white mb-2")}>
-                  Master's in Computer Science
+                  Master&apos;s in Computer Science
                 </h4>
                 <p className={theme.typography.bodySmall}>
                   Georgia State University

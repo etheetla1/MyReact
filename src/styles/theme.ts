@@ -62,6 +62,9 @@ export const theme: Theme = {
 };
 
 // Utility function to get theme values
-export const getTheme = (path: string): any => {
-  return path.split('.').reduce((obj: any, key: string) => obj?.[key], theme);
+export const getTheme = (path: string): string | Record<string, unknown> | undefined => {
+  return path.split('.').reduce((obj: Record<string, unknown> | undefined, key: string) => 
+    obj && typeof obj === 'object' ? (obj as Record<string, unknown>)[key] as Record<string, unknown> | undefined : undefined, 
+    theme as unknown as Record<string, unknown>
+  );
 };

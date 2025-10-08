@@ -1,17 +1,27 @@
 import React from 'react';
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+interface ErrorBoundaryProps {
+  children: React.ReactNode;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+  error: Error | null;
+  errorInfo: React.ErrorInfo | null;
+}
+
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false, error: null, errorInfo: null };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(): Partial<ErrorBoundaryState> {
     // Update state so the next render will show the fallback UI
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     // Log error details
     console.error('Error Boundary caught an error:', error, errorInfo);
     
@@ -49,7 +59,7 @@ class ErrorBoundary extends React.Component {
               </svg>
               <h1 className="text-2xl font-light mb-2">Something went wrong</h1>
               <p className="text-gray-400 mb-6">
-                We're sorry, but something unexpected happened. Please try refreshing the page.
+                We&apos;re sorry, but something unexpected happened. Please try refreshing the page.
               </p>
             </div>
             
@@ -81,7 +91,7 @@ class ErrorBoundary extends React.Component {
                     {this.state.error && this.state.error.toString()}
                   </pre>
                   <pre className="whitespace-pre-wrap text-red-400 mt-2">
-                    {this.state.errorInfo.componentStack}
+                    {this.state.errorInfo?.componentStack}
                   </pre>
                 </div>
               </details>

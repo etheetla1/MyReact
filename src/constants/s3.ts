@@ -1,5 +1,5 @@
-// CloudFront distribution URL from environment variables
-export const S3_BASE_URL = import.meta.env.VITE_CDN_URL || 'https://d2f1f8uiawofsx.cloudfront.net';
+// Environment-driven base URL configuration
+export const S3_BASE_URL = import.meta.env.VITE_CF_BASE || 'https://d2f1f8uiawofsx.cloudfront.net';
 
 /**
  * Utility function to generate asset URLs consistently
@@ -29,8 +29,8 @@ export const S3_IMAGES = {
 
 // Document URLs - Standardized to use CloudFront for security and performance
 export const S3_DOCUMENTS = {
-  resume: getAssetUrl('documents/ResumeMSCS-2024.pdf'),
-  awsCertification: getAssetUrl('documents/AWS-Cloud-Practitioner-Certificate.pdf'),
+  resume: getAssetUrl('documents/resume-mscs24.pdf'),
+  awsCertification: getAssetUrl('documents/aws-cloud-practitioner-certificate.pdf'),
 };
 
 // Export utility function for dynamic asset URL generation
