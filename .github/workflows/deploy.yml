@@ -35,44 +35,58 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Sync to S3
-        uses: jakejarvis/s3-sync-action@master
-        env:
-          AWS_S3_BUCKET: knowelist.com
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SOURCE_DIR: dist
+      - name: Sync to S3 with proper MIME types
+        run: |
+          # First, sync all files normally
+          aws s3 sync dist/ s3://knowelist.com/ --delete
+          
+          # Then fix MIME types for specific file types
+          echo "Setting MIME types for JavaScript files..."
+          find dist -name "*.js" -type f | while read file; do
+            s3_path="${file#dist/}"
+            echo "Processing JS: $s3_path"
+            aws s3 cp "s3://knowelist.com/$s3_path" "s3://knowelist.com/$s3_path" \
+              --metadata-directive REPLACE \
+              --content-type "application/javascript" \
+              --cache-control "public, max-age=31536000, immutable"
+          done
+          
+          echo "Setting MIME types for MJS files..."
+          find dist -name "*.mjs" -type f | while read file; do
+            s3_path="${file#dist/}"
+            echo "Processing MJS: $s3_path"
+            aws s3 cp "s3://knowelist.com/$s3_path" "s3://knowelist.com/$s3_path" \
+              --metadata-directive REPLACE \
+              --content-type "application/javascript" \
+              --cache-control "public, max-age=31536000, immutable"
+          done
+          
+          echo "Setting MIME types for CSS files..."
+          find dist -name "*.css" -type f | while read file; do
+            s3_path="${file#dist/}"
+            echo "Processing CSS: $s3_path"
+            aws s3 cp "s3://knowelist.com/$s3_path" "s3://knowelist.com/$s3_path" \
+              --metadata-directive REPLACE \
+              --content-type "text/css" \
+              --cache-control "public, max-age=31536000, immutable"
+          done
+          
+          echo "Setting MIME types for HTML files..."
+          find dist -name "*.html" -type f | while read file; do
+            s3_path="${file#dist/}"
+            echo "Processing HTML: $s3_path"
+            aws s3 cp "s3://knowelist.com/$s3_path" "s3://knowelist.com/$s3_path" \
+              --metadata-directive REPLACE \
+              --content-type "text/html" \
+              --cache-control "no-cache, no-store, must-revalidate"
+          done
 
       - name: Configure S3 for SPA routing
         run: |
           # Set up proper S3 website configuration for SPA
           aws s3 website s3://knowelist.com --index-document index.html --error-document 404.html
           
-          # Wait a moment for sync to complete
-          sleep 5
-          
-          # Set proper cache headers for HTML files (only if they exist)
-          if aws s3 ls s3://knowelist.com/index.html; then
-            aws s3 cp s3://knowelist.com/index.html s3://knowelist.com/index.html \
-              --metadata-directive REPLACE \
-              --cache-control "no-cache, no-store, must-revalidate" \
-              --content-type "text/html"
-          fi
-          
-          if aws s3 ls s3://knowelist.com/404.html; then
-            aws s3 cp s3://knowelist.com/404.html s3://knowelist.com/404.html \
-              --metadata-directive REPLACE \
-              --cache-control "no-cache, no-store, must-revalidate" \
-              --content-type "text/html"
-          fi
-          
-          # Set long cache for assets (only if assets directory exists)
-          if aws s3 ls s3://knowelist.com/assets/ --recursive | head -1; then
-            aws s3 cp s3://knowelist.com/assets/ s3://knowelist.com/assets/ \
-              --recursive \
-              --metadata-directive REPLACE \
-              --cache-control "public, max-age=31536000, immutable"
-          fi
+          echo "S3 website configuration completed successfully"
 
       - name: Invalidate CloudFront (if applicable)
         run: |
