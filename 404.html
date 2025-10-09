@@ -1,99 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 – Working on site</title>
-  <style>
-    body {
-      background: #111;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #fff;
-      letter-spacing: 2px;
-    }
-    p {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .alien-container {
-      width: 120px;
-      height: 120px;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .alien {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 0.5s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .alien.active {
-      opacity: 1;
-    }
-    /* Simple SVG silhouettes for aliens */
-    .alien svg {
-      width: 100px;
-      height: 100px;
-      fill: #fff;
-      stroke: #fff;
-      stroke-width: 2;
-    }
-  </style>
-</head>
-<body>
-  <h1>404</h1>
-  <p>Working on site. Please check back soon!</p>
-  <div class="alien-container">
-    <div class="alien active">
-      <!-- Alien 1: Humanoid -->
-      <svg viewBox="0 0 64 64">
-        <ellipse cx="32" cy="20" rx="16" ry="20"/>
-        <rect x="24" y="40" width="16" height="20" rx="8"/>
-      </svg>
-    </div>
-    <div class="alien">
-      <!-- Alien 2: Four Arms -->
-      <svg viewBox="0 0 64 64">
-        <ellipse cx="32" cy="18" rx="14" ry="16"/>
-        <rect x="22" y="34" width="20" height="18" rx="10"/>
-        <rect x="8" y="40" width="12" height="8" rx="4"/>
-        <rect x="44" y="40" width="12" height="8" rx="4"/>
-      </svg>
-    </div>
-    <div class="alien">
-      <!-- Alien 3: Tentacled -->
-      <svg viewBox="0 0 64 64">
-        <ellipse cx="32" cy="22" rx="12" ry="14"/>
-        <rect x="28" y="36" width="8" height="18" rx="4"/>
-        <rect x="18" y="44" width="8" height="14" rx="4" transform="rotate(-20 22 51)"/>
-        <rect x="38" y="44" width="8" height="14" rx="4" transform="rotate(20 42 51)"/>
-      </svg>
-    </div>
-  </div>
-  <script>
-    // Cycle through the alien silhouettes
-    const aliens = document.querySelectorAll('.alien');
-    let current = 0;
-    setInterval(() => {
-      aliens[current].classList.remove('active');
-      current = (current + 1) % aliens.length;
-      aliens[current].classList.add('active');
-    }, 1200);
-  </script>
-</body>
-</html> 
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elisha Theetla - Cloud-Native Full Stack Developer</title>
+    <script type="module" crossorigin src="/assets/index-DjqqLZfy.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-BtP0CW_r.js">
+    <link rel="modulepreload" crossorigin href="/assets/ui-BjBrQdmh.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-BhJJvcGI.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // SPA routing fallback for S3
+      // This ensures that all routes serve the React app
+      console.log('404.html loaded - SPA routing active');
+      
+      // Add error handling for production
+      window.addEventListener('error', function(e) {
+        console.error('Global error caught:', e.error);
+      });
+      
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+# Netlify-style redirects (if using Netlify)
+/*    /index.html   200
+
+# This file handles client-side routing for SPAs
+# All routes should serve the main index.html file
