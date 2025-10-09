@@ -1,10 +1,9 @@
 // Environment-driven base URL configuration
 export const S3_BASE_URL = import.meta.env.VITE_CF_BASE || 'https://d2f1f8uiawofsx.cloudfront.net';
 
-const CF = import.meta.env.VITE_CF_BASE ?? 'https://d2f1f8uiawofsx.cloudfront.net';
-
-export const RESUME_URL = `${CF}/documents/resume-mscs24.pdf`;
-export const CERT_URL   = `${CF}/documents/aws-cloud-practitioner-certificate.pdf`;
+// Direct document URL exports for easy access
+export const RESUME_URL = `${S3_BASE_URL}/documents/resume-mscs24.pdf`;
+export const CERT_URL   = `${S3_BASE_URL}/documents/aws-cloud-practitioner-certificate.pdf`;
 
 /**
  * Utility function to generate asset URLs consistently
